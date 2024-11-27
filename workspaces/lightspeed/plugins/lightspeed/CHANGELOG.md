@@ -1,10 +1,20 @@
-## @red-hat-developer-hub/backstage-plugin-lightspeed 1.0.0 (2024-08-07)
+## @red-hat-developer-hub/backstage-plugin-lightspeed
+
+## 0.1.4
+
+## Features
+
+- **lightspeed:** add multiple chats, chat creation, deletion and searching. ([#2501](https://github.com/janus-idp/backstage-plugins/pull/2501)) ([7c8e029](https://github.com/janus-idp/backstage-plugins/commit/7c8e0295fa726e6d23e60ad3abf468cf03552dfc))
+
+- **lightspeed:** integrate with lightspeed backend ([#2501](https://github.com/janus-idp/backstage-plugins/pull/2501)) ([7c8e029](https://github.com/janus-idp/backstage-plugins/commit/cb80e38d4d35a8097cd84b57c1b8eb12ec5af6b4))
 
 ## 0.1.3
 
 ### Patch Changes
 
 - 9fccf3f: Migrated from [janus-idp/backstage-plugins](https://github.com/janus-idp/backstage-plugins).
+
+## 0.1.2
 
 ### Features
 
