@@ -17,7 +17,7 @@ import React from 'react';
 
 import { useApi } from '@backstage/core-plugin-api';
 
-import { MessageProps } from '@patternfly/virtual-assistant';
+import { MessageProps } from '@patternfly/chatbot';
 import { useQuery } from '@tanstack/react-query';
 
 import { lightspeedApiRef } from '../api/api';
@@ -113,7 +113,8 @@ export const useConversationMessages = (
         _conversations[currentConversation].push(
           ...[
             createUserMessage({
-              avatar,
+              avatar:
+                'https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg',
               name: userName,
               content: humanMessage,
               timestamp: userTimestamp,
@@ -134,7 +135,7 @@ export const useConversationMessages = (
       setConversations(_conversations);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [conversationsData, userName, avatar, currentConversation, selectedModel]);
+  }, [conversationsData, userName, currentConversation, selectedModel]);
 
   const handleInputPrompt = React.useCallback(
     async (prompt: string) => {
@@ -144,7 +145,8 @@ export const useConversationMessages = (
           [currentConversation]: [
             ...(prevConv?.[currentConversation] ?? []),
             createUserMessage({
-              avatar,
+              avatar:
+                'https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg',
               name: userName,
               content: prompt,
               timestamp: getTimestamp(Date.now()) ?? '',
@@ -259,14 +261,7 @@ export const useConversationMessages = (
       }
     },
 
-    [
-      avatar,
-      userName,
-      onComplete,
-      selectedModel,
-      createMessage,
-      currentConversation,
-    ],
+    [userName, onComplete, selectedModel, createMessage, currentConversation],
   );
 
   return {

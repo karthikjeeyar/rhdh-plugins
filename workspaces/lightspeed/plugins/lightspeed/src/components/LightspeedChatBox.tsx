@@ -22,7 +22,7 @@ import {
   MessageBox,
   MessageProps,
   WelcomePrompt,
-} from '@patternfly/virtual-assistant';
+} from '@patternfly/chatbot';
 
 const useStyles = makeStyles(theme => ({
   prompt: {

@@ -18,7 +18,6 @@ import React from 'react';
 import { ErrorPanel } from '@backstage/core-components';
 
 import { Box, makeStyles } from '@material-ui/core';
-import { DropdownItem, Title } from '@patternfly/react-core';
 import {
   Chatbot,
   ChatbotContent,
@@ -31,8 +30,9 @@ import {
   ChatbotHeaderTitle,
   MessageBar,
   MessageProps,
-} from '@patternfly/virtual-assistant';
-import ChatbotConversationHistoryNav from '@patternfly/virtual-assistant/dist/dynamic/ChatbotConversationHistoryNav';
+} from '@patternfly/chatbot';
+import ChatbotConversationHistoryNav from '@patternfly/chatbot/dist/dynamic/ChatbotConversationHistoryNav';
+import { DropdownItem, Title } from '@patternfly/react-core';
 import { useQueryClient } from '@tanstack/react-query';
 
 import { useBackstageUserIdentity } from '../hooks/useBackstageUserIdentity';
@@ -271,62 +271,60 @@ export const LightspeedChat = ({
   }
 
   return (
-    <>
-      <Chatbot displayMode={ChatbotDisplayMode.embedded}>
-        <ChatbotHeader className={classes.header}>
-          <ChatbotHeaderMain>
-            <ChatbotHeaderMenu
-              aria-expanded={isDrawerOpen}
-              onMenuToggle={() => setIsDrawerOpen(!isDrawerOpen)}
-            />
-            <ChatbotHeaderTitle className={classes.headerTitle}>
-              <Title headingLevel="h1" size="3xl">
-                Developer Hub Lightspeed
-              </Title>
-            </ChatbotHeaderTitle>
-          </ChatbotHeaderMain>
-
-          <LightspeedChatBoxHeader
-            selectedModel={selectedModel}
-            handleSelectedModel={item => handleSelectedModel(item)}
-            models={models}
+    <Chatbot displayMode={ChatbotDisplayMode.embedded}>
+      <ChatbotHeader className={classes.header}>
+        <ChatbotHeaderMain>
+          <ChatbotHeaderMenu
+            aria-expanded={isDrawerOpen}
+            onMenuToggle={() => setIsDrawerOpen(!isDrawerOpen)}
           />
-        </ChatbotHeader>
-        <ChatbotConversationHistoryNav
-          displayMode={ChatbotDisplayMode.embedded}
-          onDrawerToggle={onDrawerToggle}
-          isDrawerOpen={isDrawerOpen}
-          setIsDrawerOpen={setIsDrawerOpen}
-          activeItemId={conversationId}
-          onSelectActiveItem={onSelectActiveItem}
-          conversations={filterConversations(filterValue)}
-          onNewChat={newChatCreated ? undefined : onNewChat}
-          handleTextInputChange={handleFilter}
-          drawerContent={
-            <>
-              <ChatbotContent className={classes.content}>
-                <LightspeedChatBox
-                  userName={userName}
-                  messages={messages}
-                  profileLoading={profileLoading}
-                  announcement={announcement}
-                  ref={scrollToBottomRef}
-                  welcomePrompts={welcomePrompts}
-                />
-              </ChatbotContent>
-              <ChatbotFooter className={classes.footer}>
-                <MessageBar
-                  onSendMessage={sendMessage}
-                  isSendButtonDisabled={isSendButtonDisabled}
-                  hasAttachButton={false}
-                  hasMicrophoneButton
-                />
-                <ChatbotFootnote {...getFootnoteProps()} />
-              </ChatbotFooter>
-            </>
-          }
+          <ChatbotHeaderTitle className={classes.headerTitle}>
+            <Title headingLevel="h1" size="3xl">
+              Developer Hub Lightspeed
+            </Title>
+          </ChatbotHeaderTitle>
+        </ChatbotHeaderMain>
+
+        <LightspeedChatBoxHeader
+          selectedModel={selectedModel}
+          handleSelectedModel={item => handleSelectedModel(item)}
+          models={models}
         />
-      </Chatbot>
-    </>
+      </ChatbotHeader>
+      <ChatbotConversationHistoryNav
+        displayMode={ChatbotDisplayMode.embedded}
+        onDrawerToggle={onDrawerToggle}
+        isDrawerOpen={isDrawerOpen}
+        setIsDrawerOpen={setIsDrawerOpen}
+        activeItemId={conversationId}
+        onSelectActiveItem={onSelectActiveItem}
+        conversations={filterConversations(filterValue)}
+        onNewChat={newChatCreated ? undefined : onNewChat}
+        handleTextInputChange={handleFilter}
+        drawerContent={
+          <>
+            <ChatbotContent className={classes.content}>
+              <LightspeedChatBox
+                userName={userName}
+                messages={messages}
+                profileLoading={profileLoading}
+                announcement={announcement}
+                ref={scrollToBottomRef}
+                welcomePrompts={welcomePrompts}
+              />
+            </ChatbotContent>
+            <ChatbotFooter className={classes.footer}>
+              <MessageBar
+                onSendMessage={sendMessage}
+                isSendButtonDisabled={isSendButtonDisabled}
+                hasAttachButton={false}
+                hasMicrophoneButton
+              />
+              <ChatbotFootnote {...getFootnoteProps()} />
+            </ChatbotFooter>
+          </>
+        }
+      />
+    </Chatbot>
   );
 };
