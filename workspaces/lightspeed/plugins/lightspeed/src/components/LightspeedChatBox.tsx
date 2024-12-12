@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
   prompt: {
     'justify-content': 'flex-end',
   },
+  container: {
+    maxWidth: 'unset !important',
+  },
   userMessageText: {
     '& div.pf-chatbot__message--user': {
       '& div.pf-chatbot__message-text': {
@@ -65,12 +68,13 @@ export const LightspeedChatBox = React.forwardRef(
       setCMessages(messages);
     }, [messages]);
 
+    const messageBoxClasses = `${classes.container} ${classes.userMessageText}`;
     return (
       <MessageBox
         className={
           welcomePrompts.length
-            ? `${classes.userMessageText} ${classes.prompt}`
-            : classes.userMessageText
+            ? `${messageBoxClasses} ${classes.prompt}`
+            : messageBoxClasses
         }
         announcement={announcement}
         style={{ justifyContent: 'flex-end' }}

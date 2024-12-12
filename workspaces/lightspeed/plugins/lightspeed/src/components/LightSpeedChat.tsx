@@ -50,26 +50,15 @@ import { LightspeedChatBox } from './LightspeedChatBox';
 import { LightspeedChatBoxHeader } from './LightspeedChatBoxHeader';
 
 const useStyles = makeStyles(theme => ({
-  content: {
-    '&.pf-chatbot__content': {
-      padding: 0,
-    },
-  },
   header: {
     padding: `${theme.spacing(3)}px !important`,
-  },
-  drawerActions: {
-    '&.pf-v6-c-drawer__actions': {
-      flexDirection: 'row-reverse',
-    },
   },
   headerTitle: {
     justifyContent: 'left !important',
   },
   footer: {
-    '&.pf-chatbot__footer': {
-      padding:
-        '0 var(--pf-t--global--spacer--lg) var(--pf-t--global--spacer--lg) var(--pf-t--global--spacer--lg)',
+    '&>.pf-chatbot__footer-container': {
+      width: '95% !important',
     },
   },
 }));
@@ -292,6 +281,7 @@ export const LightspeedChat = ({
         />
       </ChatbotHeader>
       <ChatbotConversationHistoryNav
+        reverseButtonOrder
         displayMode={ChatbotDisplayMode.embedded}
         onDrawerToggle={onDrawerToggle}
         isDrawerOpen={isDrawerOpen}
@@ -303,7 +293,7 @@ export const LightspeedChat = ({
         handleTextInputChange={handleFilter}
         drawerContent={
           <>
-            <ChatbotContent className={classes.content}>
+            <ChatbotContent>
               <LightspeedChatBox
                 userName={userName}
                 messages={messages}
