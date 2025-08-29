@@ -13,21 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { createTranslationResource } from '@backstage/core-plugin-api/alpha';
-
-import { lightspeedTranslationRef } from './translationRef';
-
-/**
- * Translastion Resource for Developer lightspeed
- * @public
- **/
-export const lightspeedTranslationResource = createTranslationResource({
-  ref: lightspeedTranslationRef,
-  translations: {
-    en: () => import('./en'),
-    es: () => import('./es'),
-    fr: () => import('./fr'),
-    de: () => import('./de'),
-  },
-});
+export * from './translations';
