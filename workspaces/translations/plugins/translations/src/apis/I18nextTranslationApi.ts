@@ -30,6 +30,7 @@ import {
   TFunction,
   type i18n as I18n,
 } from 'i18next';
+import Pseudo from 'i18next-pseudo';
 import ObservableImpl from 'zen-observable';
 
 import { Observable } from '@backstage/types';
@@ -239,6 +240,11 @@ export class I18nextTranslationApi implements TranslationApi {
   static create(options: I18nextTranslationApiOptions) {
     const { languages } = options.languageApi.getAvailableLanguages();
 
+    // Usage: ?pseudolocalization=true&lang=en
+    const urlParams = new URLSearchParams(window.location.search);
+    const enablePseudo = urlParams.get('pseudolocalization') === 'true';
+    const pseudoLanguage = urlParams.get('lang') || 'en';
+
     const i18n = createI18n({
       fallbackLng: DEFAULT_LANGUAGE,
       supportedLngs: languages,
@@ -255,7 +261,20 @@ export class I18nextTranslationApi implements TranslationApi {
       initImmediate: false,
     });
 
-    i18n.init();
+    if (enablePseudo) {
+      i18n
+        .use(
+          new Pseudo({
+            enabled: true,
+            languageToPseudo: pseudoLanguage,
+          }),
+        )
+        .init({
+          postProcess: ['pseudo'],
+        });
+    } else {
+      i18n.init();
+    }
     if (!i18n.isInitialized) {
       throw new Error('i18next was unexpectedly not initialized');
     }
