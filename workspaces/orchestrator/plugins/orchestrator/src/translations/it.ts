@@ -194,6 +194,14 @@ const orchestratorTranslationIt = createTranslationMessages({
       "Il campo dell'oggetto Stepper non è supportato per lo schema che non contiene proprietà",
     'formDecorator.error':
       'Il decorator del modulo deve fornire dati di contesto.',
+    'samlSso.title': 'Sessione GitHub SAML SSO scaduta',
+    'samlSso.reauthorizeButton': 'Riautorizza SSO',
+    'samlSso.body':
+      'La sessione GitHub SAML SSO è scaduta. La tua organizzazione richiede una sessione SAML attiva per accedere alle sue risorse.',
+    'samlSso.reauthorizeHint':
+      "Fai clic su 'Riautorizza SSO' per riautenticarti con il provider di identità della tua organizzazione.",
+    'samlSso.fallbackHint':
+      'Disconnettiti e accedi nuovamente da Impostazioni > Provider di autenticazione per ristabilire la sessione SAML.',
     'aria.close': 'chiudi',
   },
 });

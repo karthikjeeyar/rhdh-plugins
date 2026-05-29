@@ -193,6 +193,14 @@ const orchestratorTranslationFr = createTranslationMessages({
       "Le champ d'objet Stepper n'est pas pris en charge pour les schémas qui ne contiennent pas de propriétés",
     'formDecorator.error':
       'Le décorateur de formulaire doit fournir des données contextuelles.',
+    'samlSso.title': 'Session GitHub SAML SSO expirée',
+    'samlSso.reauthorizeButton': 'Réautoriser SSO',
+    'samlSso.body':
+      'Votre session GitHub SAML SSO a expiré. Votre organisation nécessite une session SAML active pour accéder à ses ressources.',
+    'samlSso.reauthorizeHint':
+      "Cliquez sur 'Réautoriser SSO' pour vous réauthentifier auprès du fournisseur d'identité de votre organisation.",
+    'samlSso.fallbackHint':
+      "Veuillez vous déconnecter et vous reconnecter depuis Paramètres > Fournisseurs d'authentification pour rétablir votre session SAML.",
     'aria.close': 'fermer',
   },
 });

@@ -47,6 +47,7 @@ export const useFetch = (
   formData: JsonObject,
   uiProps: UiProps,
   retrigger: ReturnType<typeof useRetriggerEvaluate>,
+  onSamlSsoError?: (error: Error) => void,
 ) => {
   const fetchApi = useApi(fetchApiRef);
 
@@ -158,11 +159,30 @@ export const useFetch = (
 
           setLoading(true);
 
+          // TODO: Remove before merging — simulation for reviewers to test SAML SSO error handling
+          if (localStorage.getItem('SIMULATE_SAML_SSO_ERROR') === 'true') {
+            const samlError = new Error(
+              'GitHub SAML SSO session expired. Re-authorize at: https://github.com/orgs/test-org/sso',
+            );
+            onSamlSsoError?.(samlError);
+            return;
+          }
+
           const response = await fetchApi.fetch(
             evaluatedFetchUrl,
             evaluatedRequestInit,
           );
           if (!response.ok) {
+            const ssoHeader = response.headers.get('x-github-sso');
+            if (response.status === 403 && ssoHeader) {
+              const urlMatch = ssoHeader.match(/url=(\S+)/);
+              const reauthorizeUrl = urlMatch?.[1];
+              const samlError = new Error(
+                `GitHub SAML SSO session expired.${reauthorizeUrl ? ` Re-authorize at: ${reauthorizeUrl}` : ''}`,
+              );
+              onSamlSsoError?.(samlError);
+              return;
+            }
             throw new Error(
               `Request ${evaluatedFetchUrl} returned status ${response.status}. Status text: ${response.statusText}.`,
             );

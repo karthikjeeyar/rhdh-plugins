@@ -100,7 +100,12 @@ export const ActiveDropdown: Widget<
     uiProps['fetch:retrigger'] as string[],
   );
 
-  const { data, error, loading } = useFetch(formData ?? {}, uiProps, retrigger);
+  const { data, error, loading } = useFetch(
+    formData ?? {},
+    uiProps,
+    retrigger,
+    formContext?.onSamlSsoError,
+  );
 
   // Track the complete loading state (fetch + processing)
   const { completeLoading, wrapProcessing } = useProcessingState(

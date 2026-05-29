@@ -188,6 +188,14 @@ const orchestratorTranslationDe = createTranslationMessages({
     'stepperObjectField.error':
       'Stepper-Objektfeld wird für Schemata ohne Eigenschaften nicht unterstützt',
     'formDecorator.error': 'Form-Decorator muss Kontextdaten bereitstellen.',
+    'samlSso.title': 'GitHub SAML SSO-Sitzung abgelaufen',
+    'samlSso.reauthorizeButton': 'SSO erneut autorisieren',
+    'samlSso.body':
+      'Ihre GitHub SAML SSO-Sitzung ist abgelaufen. Ihre Organisation erfordert eine aktive SAML-Sitzung, um auf ihre Ressourcen zugreifen zu können.',
+    'samlSso.reauthorizeHint':
+      "Klicken Sie auf 'SSO erneut autorisieren', um sich bei dem Identitätsanbieter Ihrer Organisation erneut zu authentifizieren.",
+    'samlSso.fallbackHint':
+      'Bitte melden Sie sich ab und über Einstellungen > Auth-Anbieter erneut an, um Ihre SAML-Sitzung wiederherzustellen.',
     'aria.close': 'schließen',
   },
 });

@@ -164,6 +164,14 @@ const orchestratorTranslationJa = createTranslationMessages({
       'ステッパーオブジェクトフィールドは、プロパティーを含まないスキーマではサポートされていません',
     'formDecorator.error':
       'フォームデコレーターはコンテキストデータを提供する必要があります。',
+    'samlSso.title': 'GitHub SAML SSO セッションの有効期限切れ',
+    'samlSso.reauthorizeButton': 'SSO を再認証',
+    'samlSso.body':
+      'GitHub SAML SSO セッションの有効期限が切れました。組織のリソースにアクセスするには、有効な SAML セッションが必要です。',
+    'samlSso.reauthorizeHint':
+      "'SSO を再認証' をクリックして、組織のアイデンティティプロバイダーで再認証してください。",
+    'samlSso.fallbackHint':
+      '設定 > 認証プロバイダー からサインアウトし、再度サインインして SAML セッションを再確立してください。',
     'aria.close': '閉じる',
   },
 });
